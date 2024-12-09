@@ -77,16 +77,16 @@ export default function Home() {
       </section>
 
       <section>
-        <header>
+        <h2>
           <strong>Resources</strong>
-        </header>
+        </h2>
 
         <ul>
           <li>
             <a
-              href="https://nextjs.org/docs"
-              target="_blank"
-              rel="noopener noreferrer"
+                href="https://nextjs.org/docs"
+                target="_blank"
+                rel="noopener noreferrer"
             >
               Next.js docs
             </a>
@@ -94,9 +94,9 @@ export default function Home() {
 
           <li>
             <a
-              href="https://redux-toolkit.js.org/usage/usage-guide"
-              target="_blank"
-              rel="noopener noreferrer"
+                href="https://redux-toolkit.js.org/usage/usage-guide"
+                target="_blank"
+                rel="noopener noreferrer"
             >
               Redux Toolkit docs
             </a>
@@ -104,9 +104,9 @@ export default function Home() {
 
           <li>
             <a
-              href="https://redux-toolkit.js.org/rtk-query/usage/mutations"
-              target="_blank"
-              rel="noopener noreferrer"
+                href="https://redux-toolkit.js.org/rtk-query/usage/mutations"
+                target="_blank"
+                rel="noopener noreferrer"
             >
               Redux Toolkit Query (mutations)
             </a>
@@ -114,9 +114,9 @@ export default function Home() {
 
           <li>
             <a
-              href="https://tailwindcss.com/docs/installation"
-              target="_blank"
-              rel="noopener noreferrer"
+                href="https://tailwindcss.com/docs/installation"
+                target="_blank"
+                rel="noopener noreferrer"
             >
               TailwindCSS Docs
             </a>

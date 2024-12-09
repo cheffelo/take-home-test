@@ -1,7 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { APIError, Product } from "../../../types";
-import { devdb } from "../../../lib/db";
-import { Low } from "lowdb";
+import {APIError, Product} from "../../../types";
+import {devdb} from "../../../lib/db";
+import {Low} from "lowdb";
 
 let database: Low<Product[]> | null = null;
 
@@ -12,40 +11,47 @@ async function initDatabase() {
     }
 }
 
-// GET method
 export async function GET() {
     await initDatabase();
 
     if (!database || !database.data) {
-        return NextResponse.json(
-            { status: 502, message: "Database not available" } as APIError,
-            { status: 502 }
-        );
+        return new Response(JSON.stringify({ message: "Database not available" }), {
+            status: 502,
+            headers: { "Content-Type": "application/json" },
+        });
     }
 
-    return NextResponse.json(database.data, { status: 200 });
+    return new Response(JSON.stringify(database.data), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+    });
 }
 
-// POST method
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
     await initDatabase();
 
     if (!database || !database.data) {
-        return NextResponse.json(
-            { status: 502, message: "Database not available" } as APIError,
-            { status: 502 }
-        );
+        return new Response(JSON.stringify({ message: "Database not available" }), {
+            status: 502,
+            headers: { "Content-Type": "application/json" },
+        });
     }
 
     try {
-        const body = await req.json();
-        database.data = body;
+        database.data = await req.json();
         await database.write();
-        return NextResponse.json(database.data, { status: 200 });
+
+        return new Response(JSON.stringify(database.data), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+        });
     } catch (error) {
-        return NextResponse.json(
-            { status: 500, message: "Failed to save data" } as APIError,
-            { status: 500 }
+        return new Response(
+            JSON.stringify({ message: "Failed to save data" } as APIError),
+            {
+                status: 500,
+                headers: { "Content-Type": "application/json" },
+            }
         );
     }
 }

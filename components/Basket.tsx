@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from "react";
 import { useGetBasketQuery } from "../store/services/basket";
 
 const Basket: React.FC<HTMLAttributes<HTMLDivElement>> = (props) => {

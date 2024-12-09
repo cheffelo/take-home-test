@@ -12,6 +12,7 @@ const RootLayout = ({
     return (
         <html lang="en">
         <body className="max-w-screen-lg mx-auto">
+
         <Providers>{children}</Providers>
         </body>
         </html>

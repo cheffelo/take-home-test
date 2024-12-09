@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes } from "react";
 
 import { Product } from "../types";
@@ -7,7 +9,7 @@ interface ProductCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
-  <div>Product card</div>
+  <div className="border-2 ">Product card</div>
 );
 
 export default ProductCard;

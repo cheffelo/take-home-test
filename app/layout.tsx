@@ -3,12 +3,12 @@ import Providers from "../providers";
 import React from "react";
 import "../styles/globals.css";
 
-
-const RootLayout = ({
-                        children,
-                    }: {
+type Props = {
     children: React.ReactNode;
-}) => {
+}
+
+
+const RootLayout = ({ children }: Props ) => {
     return (
         <html lang="en">
         <body className="max-w-screen-lg mx-auto">

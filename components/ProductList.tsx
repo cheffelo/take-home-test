@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React, { HTMLAttributes } from "react";
 import { useGetProductsQuery } from "../store/services/products";

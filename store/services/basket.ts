@@ -20,10 +20,10 @@ export const basketApi = createApi({
       invalidatesTags: ["Basket"],
     }),
     addToBasket: builder.mutation<Product[], Product>({
-      query: null, // Implement me
+      query: () => "", // Implement me
     }),
     removeFromBasket: builder.mutation<Product[], Product["productId"]>({
-      query: null, // Implement me
+      query: () => "", // Implement me
     }),
   }),
 });

@@ -11,3 +11,7 @@ export interface APIError {
   status: number;
   message: string;
 }
+
+export interface ProductResponse {
+  data: Product[];
+}

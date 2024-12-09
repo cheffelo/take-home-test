@@ -1,6 +1,7 @@
-import {APIError, Product} from "../../../types";
-import {devdb} from "../../../lib/db";
-import {Low} from "lowdb";
+import { APIError, Product } from "../../../types";
+import { devdb } from "../../../lib/db";
+import { Low } from "lowdb";
+import { NextResponse } from "next/server";
 
 let database: Low<Product[]> | null = null;
 
@@ -15,43 +16,25 @@ export async function GET() {
     await initDatabase();
 
     if (!database || !database.data) {
-        return new Response(JSON.stringify({ message: "Database not available" }), {
-            status: 502,
-            headers: { "Content-Type": "application/json" },
-        });
+        return NextResponse.json({ message: "Database not available" }, { status: 502 });
     }
 
-    return new Response(JSON.stringify(database.data), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-    });
+    return NextResponse.json(database.data, { status: 200 });
 }
 
 export async function POST(req: Request) {
     await initDatabase();
 
     if (!database || !database.data) {
-        return new Response(JSON.stringify({ message: "Database not available" }), {
-            status: 502,
-            headers: { "Content-Type": "application/json" },
-        });
+        return NextResponse.json({ message: "Database not available" }, { status: 502 });
     }
 
     try {
         database.data = await req.json();
         await database.write();
 
-        return new Response(JSON.stringify(database.data), {
-            status: 200,
-            headers: { "Content-Type": "application/json" },
-        });
+        return NextResponse.json(database.data, { status: 200 });
     } catch (error) {
-        return new Response(
-            JSON.stringify({ message: "Failed to save data" } as APIError),
-            {
-                status: 500,
-                headers: { "Content-Type": "application/json" },
-            }
-        );
+        return NextResponse.json({ message: "Failed to save data" } as APIError, { status: 500 });
     }
 }
